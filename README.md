@@ -12,5 +12,5 @@ Simple C++ GUI application to track system information such as:
 Going to try imgui out and see how it works. Looks interesting and 
 have heard good things
 
-#Usage
+# Usage
 Will update once I write some code...
