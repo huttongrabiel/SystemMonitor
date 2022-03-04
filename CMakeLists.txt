@@ -27,9 +27,8 @@ add_executable(SystemMonitor ${IMGUI_SRC})
 include_directories("${CMAKE_SOURCE_DIR}/vendor/imgui"
                     "${CMAKE_SOURCE_DIR}/vendor/imgui/backends/"
                     "${CMAKE_SOURCE_DIR}/src/"
-#                    "${CMAKE_SOURCE_DIR}/vendor/imgui/examples/libs/glfw/include/GLFW/"
                    )
 
-#add_subdirectory("${CMAKE_SOURCE_DIR}/vendor/imgui/examples/libs/glfw/")
-
+# https://stackoverflow.com/questions/17768008/how-to-build-install-glfw-3-and-use-it-in-a-linux-project
+# Above link gave me all the libraries that I needed for GLFW
 target_link_libraries(SystemMonitor glfw3 GL GLU X11 Xxf86vm Xrandr pthread Xi dl Xinerama Xcursor)
