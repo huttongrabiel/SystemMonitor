@@ -18,7 +18,10 @@ Will update once I write some code...
 # Investigation In Reading CPU Temps for AMD
 [CoreTemp.com](https://www.alcpu.com/CoreTemp/howitworks.html)  
 [OverclockThread](https://www.overclock.net/threads/amd-temp-information-and-guide.1128821/)  
-[OpenHardwareMonitor](https://openhardwaremonitor.org/)  
+[OpenHardwareMonitor](https://openhardwaremonitor.org/) 
+
+This one could be important, particularly *SB-TSI Protocol*   
+[AMDOpenSourceRegisterReference](https://developer.amd.com/wp-content/resources/56255_3_03.PDF) 
 
 **How CPU Temps are read in AMD chips**  
 According to CoreTemp, "AMD processors report the temperature via a special  
