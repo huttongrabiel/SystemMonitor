@@ -20,7 +20,7 @@ Will update once I write some code...
 [OverclockThread](https://www.overclock.net/threads/amd-temp-information-and-guide.1128821/)  
 [OpenHardwareMonitor](https://openhardwaremonitor.org/)  
 
-**How CPU Temps are read in AMD chips** 
+**How CPU Temps are read in AMD chips**  
 According to CoreTemp, "AMD processors report the temperature via a special  
 register in the CPU's northbridge. Core Temp reads the value from the register  
 and uses a formula provided by AMD to calculate the current temperature.The formula  

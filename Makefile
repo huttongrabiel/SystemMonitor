@@ -150,6 +150,60 @@ src/test.cpp.s:
 	$(MAKE) -f CMakeFiles/SystemMonitor.dir/build.make CMakeFiles/SystemMonitor.dir/src/test.cpp.s
 .PHONY : src/test.cpp.s
 
+vendor/imgui/backends/imgui_impl_glfw.o: vendor/imgui/backends/imgui_impl_glfw.cpp.o
+
+.PHONY : vendor/imgui/backends/imgui_impl_glfw.o
+
+# target to build an object file
+vendor/imgui/backends/imgui_impl_glfw.cpp.o:
+	$(MAKE) -f CMakeFiles/SystemMonitor.dir/build.make CMakeFiles/SystemMonitor.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.o
+.PHONY : vendor/imgui/backends/imgui_impl_glfw.cpp.o
+
+vendor/imgui/backends/imgui_impl_glfw.i: vendor/imgui/backends/imgui_impl_glfw.cpp.i
+
+.PHONY : vendor/imgui/backends/imgui_impl_glfw.i
+
+# target to preprocess a source file
+vendor/imgui/backends/imgui_impl_glfw.cpp.i:
+	$(MAKE) -f CMakeFiles/SystemMonitor.dir/build.make CMakeFiles/SystemMonitor.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.i
+.PHONY : vendor/imgui/backends/imgui_impl_glfw.cpp.i
+
+vendor/imgui/backends/imgui_impl_glfw.s: vendor/imgui/backends/imgui_impl_glfw.cpp.s
+
+.PHONY : vendor/imgui/backends/imgui_impl_glfw.s
+
+# target to generate assembly for a file
+vendor/imgui/backends/imgui_impl_glfw.cpp.s:
+	$(MAKE) -f CMakeFiles/SystemMonitor.dir/build.make CMakeFiles/SystemMonitor.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.s
+.PHONY : vendor/imgui/backends/imgui_impl_glfw.cpp.s
+
+vendor/imgui/backends/imgui_impl_opengl3.o: vendor/imgui/backends/imgui_impl_opengl3.cpp.o
+
+.PHONY : vendor/imgui/backends/imgui_impl_opengl3.o
+
+# target to build an object file
+vendor/imgui/backends/imgui_impl_opengl3.cpp.o:
+	$(MAKE) -f CMakeFiles/SystemMonitor.dir/build.make CMakeFiles/SystemMonitor.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.o
+.PHONY : vendor/imgui/backends/imgui_impl_opengl3.cpp.o
+
+vendor/imgui/backends/imgui_impl_opengl3.i: vendor/imgui/backends/imgui_impl_opengl3.cpp.i
+
+.PHONY : vendor/imgui/backends/imgui_impl_opengl3.i
+
+# target to preprocess a source file
+vendor/imgui/backends/imgui_impl_opengl3.cpp.i:
+	$(MAKE) -f CMakeFiles/SystemMonitor.dir/build.make CMakeFiles/SystemMonitor.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.i
+.PHONY : vendor/imgui/backends/imgui_impl_opengl3.cpp.i
+
+vendor/imgui/backends/imgui_impl_opengl3.s: vendor/imgui/backends/imgui_impl_opengl3.cpp.s
+
+.PHONY : vendor/imgui/backends/imgui_impl_opengl3.s
+
+# target to generate assembly for a file
+vendor/imgui/backends/imgui_impl_opengl3.cpp.s:
+	$(MAKE) -f CMakeFiles/SystemMonitor.dir/build.make CMakeFiles/SystemMonitor.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.s
+.PHONY : vendor/imgui/backends/imgui_impl_opengl3.cpp.s
+
 vendor/imgui/imgui.o: vendor/imgui/imgui.cpp.o
 
 .PHONY : vendor/imgui/imgui.o
@@ -297,6 +351,12 @@ help:
 	@echo "... src/test.o"
 	@echo "... src/test.i"
 	@echo "... src/test.s"
+	@echo "... vendor/imgui/backends/imgui_impl_glfw.o"
+	@echo "... vendor/imgui/backends/imgui_impl_glfw.i"
+	@echo "... vendor/imgui/backends/imgui_impl_glfw.s"
+	@echo "... vendor/imgui/backends/imgui_impl_opengl3.o"
+	@echo "... vendor/imgui/backends/imgui_impl_opengl3.i"
+	@echo "... vendor/imgui/backends/imgui_impl_opengl3.s"
 	@echo "... vendor/imgui/imgui.o"
 	@echo "... vendor/imgui/imgui.i"
 	@echo "... vendor/imgui/imgui.s"
