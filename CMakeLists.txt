@@ -7,11 +7,12 @@ set(CMAKE_CXX_FLAGS "-g")
 #make an imgui folder and put all of these files in the imgui folder
 set(IMGUI_SRC
         src/test.cpp
-#        vendor/imgui/backends/imgui_impl_opengl3.h
-#        vendor/imgui/backends/imgui_impl_opengl3.cpp
-#        vendor/imgui/backends/imgui_impl_opengl3_loader.h
-#        vendor/imgui/backends/imgui_impl_glfw.h
-#        vendor/imgui/backends/imgui_impl_glfw.cpp
+#        vendor/imgui/examples/libs/glfw/include/GLFW/glfw3.h
+        vendor/imgui/backends/imgui_impl_opengl3.h
+        vendor/imgui/backends/imgui_impl_opengl3.cpp
+        vendor/imgui/backends/imgui_impl_opengl3_loader.h
+        vendor/imgui/backends/imgui_impl_glfw.h
+        vendor/imgui/backends/imgui_impl_glfw.cpp
         vendor/imgui/imgui.h
         vendor/imgui/imgui.cpp
         vendor/imgui/imgui_draw.cpp
@@ -24,6 +25,11 @@ set(IMGUI_SRC
 add_executable(SystemMonitor ${IMGUI_SRC})
 
 include_directories("${CMAKE_SOURCE_DIR}/vendor/imgui"
-                    "${CMAKE_SOURCE_DIR}/vendor/imgui/backends"
-                    "${CMAKE_SOURCE_DIR}/src"
+                    "${CMAKE_SOURCE_DIR}/vendor/imgui/backends/"
+                    "${CMAKE_SOURCE_DIR}/src/"
+#                    "${CMAKE_SOURCE_DIR}/vendor/imgui/examples/libs/glfw/include/GLFW/"
                    )
+
+#add_subdirectory("${CMAKE_SOURCE_DIR}/vendor/imgui/examples/libs/glfw/")
+
+target_link_libraries(SystemMonitor glfw3 GL GLU X11 Xxf86vm Xrandr pthread Xi dl Xinerama Xcursor)
