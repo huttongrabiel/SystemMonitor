@@ -2,11 +2,11 @@ cmake_minimum_required(VERSION 3.16)
 
 project(SystemMonitor)
 set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_FLAGS "-g")
+set(CMAKE_CXX_FLAGS "-g -D CMAKE_CXX_COMPILER=g++-9.3.0")
 
 #make an imgui folder and put all of these files in the imgui folder
 set(IMGUI_SRC
-        src/test.cpp
+        src/main.cpp
 #        vendor/imgui/examples/libs/glfw/include/GLFW/glfw3.h
         vendor/imgui/backends/imgui_impl_opengl3.h
         vendor/imgui/backends/imgui_impl_opengl3.cpp
