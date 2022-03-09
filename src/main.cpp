@@ -18,6 +18,8 @@
 #include <string.h>
 #include <fstream>
 
+std::string cpu_temperature();
+
 // [Win32] Our example includes a copy of glfw3.lib pre-compiled with VS2010 to maximize ease of testing and compatibility with old VS compilers.
 // To link with VS2010-era libraries, VS2015+ requires linking with legacy_stdio_definitions.lib, which we do using this pragma.
 // Your own project should not be affected, as you are likely to link with a newer binary of GLFW that is adequate for your version of Visual Studio.
@@ -100,7 +102,9 @@ int main(int, char**)
     // Our state
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-    int loop_count = 0;
+//    int loop_count = 0;
+
+    ImFont* bold_font = io.Fonts->AddFontFromFileTTF("vendor/imgui/misc/fonts/Roboto-Medium.ttf", 20.0);
 
     // Main loop
     while (!glfwWindowShouldClose(window))
@@ -112,14 +116,6 @@ int main(int, char**)
         // Generally you may always pass all inputs to dear imgui, and hide them from your application based on those two flags.
         glfwPollEvents();
 
-        std::ifstream thermal_zone0 ("/sys/class/thermal/thermal_zone0/temp");
-
-        std::string cpu_temperature;
-
-        if (thermal_zone0.is_open()) {
-            getline(thermal_zone0, cpu_temperature);
-        }
-
         // Start the Dear ImGui frame
         ImGui::SetNextWindowSize(ImVec2(500,600), ImGuiCond_Once);
         ImGui_ImplOpenGL3_NewFrame();
@@ -130,36 +126,18 @@ int main(int, char**)
         ImGui::Begin("System Monitor");
         ImGui::SetWindowSize(ImVec2(500,600), ImGuiCond_Once);
 
-        ImGui::Text("CPU Temp: %s", cpu_temperature.c_str());
+        std::string current_cpu_temperature;
+        current_cpu_temperature = cpu_temperature();
 
-        if (!thermal_zone0.is_open()) {
-            std::cerr << "ERROR: Failed to open /sys/class/thermal/thermal_zone0/temp\n";
-            exit(1);
-        }
+        // 100 milliseconds is a good tradeoff of slower boot but non-glitchy
+        // looking temperature reading
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-        if (loop_count == 0) {
-            getline(thermal_zone0, cpu_temperature);
-        }
-        else if (loop_count > 0) {
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-            getline(thermal_zone0, cpu_temperature);
-        }
-
-        // Adding decimals to cpu_temperature value
-        //FIXME: Add decimals to string in correct locations
-        int decimal_count = 0;
-        for (int i = cpu_temperature.length()-1; i >=0; i--) {
-            decimal_count++;
-            if (decimal_count == 3) {
-                int index_from_front = cpu_temperature.length() - i;
-                cpu_temperature.insert(index_from_front, 1, '.');
-            }
-            decimal_count = 0;
-        }
+        ImGui::PushFont(bold_font);
+        ImGui::Text("CPU Temp: %s", current_cpu_temperature.c_str());
+        ImGui::PopFont();
 
         ImGui::End();
-
-        thermal_zone0.close();
 
         // Rendering
         ImGui::Render();
@@ -171,7 +149,7 @@ int main(int, char**)
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         glfwSwapBuffers(window);
-        loop_count++;
+//        loop_count++;
     }
 
 
@@ -184,4 +162,31 @@ int main(int, char**)
     glfwTerminate();
 
     return 0;
+}
+
+std::string cpu_temperature() {
+    std::string path = "/sys/class/thermal/thermal_zone0/temp";
+    std::ifstream thermal_zone0 (path);
+
+    if (!thermal_zone0.is_open()) {
+        std::cerr << "ERROR: Failed to open file " << path << ".\n";
+    }
+
+    std::string cpu_temperature;
+    thermal_zone0 >> cpu_temperature;
+
+    std::string cpu_temperature_decimal;
+
+    int decimal_count = 0;
+    for (int i = cpu_temperature.length()-1; i >= 0; i--) {
+        cpu_temperature_decimal.insert(0, 1, cpu_temperature[i]);
+
+       decimal_count++;
+       if (decimal_count == 3) {
+           cpu_temperature_decimal.insert(0, 1, '.');
+           decimal_count = 0;
+       }
+    }
+    thermal_zone0.close();
+    return cpu_temperature_decimal;
 }
