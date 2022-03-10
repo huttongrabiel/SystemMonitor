@@ -114,9 +114,6 @@ int main(int, char**)
         std::string current_cpu_temperature;
         current_cpu_temperature = cpu_temperature();
 
-        // 100 milliseconds is a good tradeoff of slower boot but non-glitchy
-        // looking temperature reading
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
         ImGui::BeginTable("table 1", 2);
 
