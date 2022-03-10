@@ -91,7 +91,7 @@ int main(int, char**)
     // - The fonts will be rasterized at a given size (w/ oversampling) and stored into a texture when calling ImFontAtlas::Build()/GetTexDataAsXXXX(), which ImGui_ImplXXXX_NewFrame below will call.
     // - Read 'docs/FONTS.md' for more instructions and details.
     // - Remember that in C/C++ if you want to include a backslash \ in a string literal you need to write a double backslash \\ !
-    //io.Fonts->AddFontDefault();
+    io.Fonts->AddFontDefault();
     //io.Fonts->AddFontFromFileTTF("../../misc/fonts/Roboto-Medium.ttf", 16.0f);
     //io.Fonts->AddFontFromFileTTF("../../misc/fonts/Cousine-Regular.ttf", 15.0f);
     //io.Fonts->AddFontFromFileTTF("../../misc/fonts/DroidSans.ttf", 16.0f);
@@ -102,9 +102,9 @@ int main(int, char**)
     // Our state
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-//    int loop_count = 0;
 
-    ImFont* bold_font = io.Fonts->AddFontFromFileTTF("vendor/imgui/misc/fonts/Roboto-Medium.ttf", 20.0);
+    ImFont* roboto_medium1 = io.Fonts->AddFontFromFileTTF("vendor/imgui/misc/fonts/Roboto-Medium.ttf", 20.0);
+    ImFont* roboto_medium2 = io.Fonts->AddFontFromFileTTF("vendor/imgui/misc/fonts/Roboto-Medium.ttf", 16.0);
 
     // Main loop
     while (!glfwWindowShouldClose(window))
@@ -117,7 +117,7 @@ int main(int, char**)
         glfwPollEvents();
 
         // Start the Dear ImGui frame
-        ImGui::SetNextWindowSize(ImVec2(500,600), ImGuiCond_Once);
+//        ImGui::SetNextWindowSize(ImVec2(500,600), ImGuiCond_Once);
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
@@ -133,9 +133,30 @@ int main(int, char**)
         // looking temperature reading
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-        ImGui::PushFont(bold_font);
-        ImGui::Text("CPU Temp: %s", current_cpu_temperature.c_str());
+        ImGui::BeginTable("table 1", 2);
+
+        ImGui::TableNextColumn();
+
+        ImGui::PushFont(roboto_medium1);
+        ImGui::Text("CPU Temperature: ");
+
+//        ImGui::SameLine();
+        ImGui::TableNextColumn();
+
+        ImGui::PushFont(roboto_medium2);
+        ImGui::Text("%s", current_cpu_temperature.c_str());
+
         ImGui::PopFont();
+        ImGui::PopFont();
+
+        ImGui::TableNextRow();
+        ImGui::TableNextColumn();
+
+        ImGui::PushFont(roboto_medium1);
+        ImGui::Text("GPU Temperature");
+        ImGui::PopFont();
+
+        ImGui::EndTable();
 
         ImGui::End();
 
@@ -149,7 +170,6 @@ int main(int, char**)
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         glfwSwapBuffers(window);
-//        loop_count++;
     }
 
 
