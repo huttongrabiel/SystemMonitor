@@ -109,11 +109,10 @@ int main(int, char**)
 
         // Main Window
         ImGui::Begin("System Monitor");
-        ImGui::SetWindowSize(ImVec2(500,600), ImGuiCond_Once);
+        ImGui::SetWindowSize(ImVec2(600, 700), ImGuiCond_Once);
 
         std::string current_cpu_temperature;
         current_cpu_temperature = cpu_temperature();
-
 
         ImGui::BeginTable("table 1", 2);
 
