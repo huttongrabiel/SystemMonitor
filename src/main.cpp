@@ -108,8 +108,9 @@ int main(int, char**)
         ImGui::NewFrame();
 
         // Main Window
-        ImGui::Begin("System Monitor");
+        ImGui::Begin("System Monitor", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
         ImGui::SetWindowSize(ImVec2(600, 700), ImGuiCond_Once);
+        ImGui::SetWindowPos(ImVec2(0,0), ImGuiCond_Once);
 
         std::string current_cpu_temperature;
         current_cpu_temperature = cpu_temperature();
@@ -131,6 +132,9 @@ int main(int, char**)
 
         ImGui::TableNextRow();
         ImGui::TableNextColumn();
+        for (int i = 0; i < 10; i++) {
+            ImGui::Spacing();
+        }
 
         ImGui::PushFont(roboto_medium1);
         ImGui::Text("GPU Temperature");
