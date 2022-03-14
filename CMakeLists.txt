@@ -19,7 +19,8 @@ set(IMGUI_SRC
         vendor/imgui/imgui_tables.cpp
         vendor/imgui/imgui_widgets.cpp
         vendor/imgui/imgui_demo.cpp
-        )
+        src/SystemInformation.cpp 
+        src/SystemInformation.h)
 
 #Create the executable and link against all the files provided to us by ImGui
 add_executable(SystemMonitor ${IMGUI_SRC})
