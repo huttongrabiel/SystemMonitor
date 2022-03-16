@@ -10,8 +10,8 @@
 
 class SystemInformation {
 public:
-    std::string cpu_temperature();
-    std::string uptime();
+    static std::string cpu_temperature();
+    static std::string uptime();
 };
 
 #endif //SYSTEMMONITOR_SYSTEMINFORMATION_H

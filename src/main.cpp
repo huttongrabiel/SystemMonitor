@@ -17,6 +17,7 @@
 #include <iostream>
 #include <string.h>
 #include <fstream>
+#include <SystemInformation.h>
 
 std::string cpu_temperature();
 
@@ -125,7 +126,7 @@ int main(int, char**)
         ImGui::TableNextColumn();
 
         ImGui::PushFont(roboto_medium2);
-        ImGui::Text("%s", current_cpu_temperature.c_str());
+        ImGui::Text("%s", SystemInformation::cpu_temperature().c_str());
 
         ImGui::PopFont();
         ImGui::PopFont();
@@ -166,31 +167,4 @@ int main(int, char**)
     glfwTerminate();
 
     return 0;
-}
-
-std::string cpu_temperature() {
-    std::string path = "/sys/class/thermal/thermal_zone0/temp";
-    std::ifstream thermal_zone0 (path);
-
-    if (!thermal_zone0.is_open()) {
-        std::cerr << "ERROR: Failed to open file " << path << ".\n";
-    }
-
-    std::string cpu_temperature;
-    thermal_zone0 >> cpu_temperature;
-
-    std::string cpu_temperature_decimal;
-
-    int decimal_count = 0;
-    for (int i = cpu_temperature.length()-1; i >= 0; i--) {
-        cpu_temperature_decimal.insert(0, 1, cpu_temperature[i]);
-
-       decimal_count++;
-       if (decimal_count == 3) {
-           cpu_temperature_decimal.insert(0, 1, '.');
-           decimal_count = 0;
-       }
-    }
-    thermal_zone0.close();
-    return cpu_temperature_decimal;
 }
