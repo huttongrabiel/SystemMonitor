@@ -6,15 +6,15 @@
 #include <Helper.h>
 
 std::string Helper::int_to_string(int num) {
-    std::string reverse_retval;
 
+    std::string reverse_retval = "";
     while (num > 0) {
         reverse_retval += (num % 10) + '0';
         num /= 10;
     }
 
-    std::string retval;
-    for (int i = reverse_retval.length(); i > 0; i++) {
+    std::string retval = "";
+    for (int i = reverse_retval.length()-1; i >= 0; i--) {
         retval += reverse_retval[i];
     }
 
