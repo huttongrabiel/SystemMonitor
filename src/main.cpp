@@ -17,7 +17,10 @@
 #include <iostream>
 #include <string.h>
 #include <fstream>
+
+// internally wrapped libraries
 #include <SystemInformation.h>
+#include <Helper.h>
 
 std::string cpu_temperature();
 
@@ -114,7 +117,7 @@ int main(int, char**)
         ImGui::SetWindowPos(ImVec2(0,0), ImGuiCond_Once);
 
         std::string current_cpu_temperature;
-        current_cpu_temperature = cpu_temperature();
+        current_cpu_temperature = SystemInformation::cpu_temperature();
 
         ImGui::BeginTable("table 1", 2);
 
