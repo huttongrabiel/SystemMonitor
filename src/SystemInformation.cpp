@@ -5,7 +5,8 @@
 #include <iostream>
 #include <string.h>
 #include <fstream>
-#include "SystemInformation.h"
+#include <SystemInformation.h>
+#include <Helper.h>
 
 std::string SystemInformation::cpu_temperature() {
     std::string path = "/sys/class/thermal/thermal_zone0/temp";
@@ -43,7 +44,7 @@ std::string SystemInformation::uptime() {
 
     std::string file_contents = "";
     while (!uptime.eof()) {
-        uptime >> uptime_in_seconds;
+        uptime >> file_contents;
     }
 
     // We only need the value up to the first decimal point we encounter.
@@ -54,10 +55,10 @@ std::string SystemInformation::uptime() {
         uptime_in_seconds += file_contents[i];
     }
 
-    int int_uptime = Helper::uptime_in_seconds.string_to_int();
+    int int_uptime = Helper::string_to_int(uptime_in_seconds);
     int int_uptime_in_hours = int_uptime / 3600;
 
-    std::string uptime_in_hours = Helper::int_uptime_in_hours.int_to_string();
+    std::string uptime_in_hours = Helper::int_to_string(int_uptime_in_hours);
 
     return uptime_in_hours;
 }
