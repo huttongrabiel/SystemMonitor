@@ -153,6 +153,17 @@ int main(int, char**)
         ImGui::Text("%s",  gpu_temp_placeholder.c_str());
         ImGui::PopFont();
 
+        ImGui::TableNextRow();
+        ImGui::TableNextColumn();
+
+        ImGui::PushFont(roboto_medium1);
+        ImGui::Text("Uptime:");
+
+        ImGui::TableNextColumn();
+        std::string uptime = SystemInformation::uptime();
+        ImGui::Text("%s", uptime.c_str());
+        ImGui::PopFont();
+
         ImGui::EndTable();
 
         ImGui::End();
