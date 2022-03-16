@@ -8,8 +8,9 @@
 #include <string.h>
 #include <iostream>
 class Helper {
-    int string_to_int(std::string);
-    std::string int_to_string(int);
+public:
+    static int string_to_int(std::string);
+    static std::string int_to_string(int);
 };
 
 #endif //SYSTEMMONITOR_HELPER_H
