@@ -34,7 +34,9 @@ std::string SystemInformation::cpu_temperature() {
     return cpu_temperature_decimal;
 }
 
-std::string SystemInformation::uptime() {
+int SystemInformation::int_uptime;
+
+void SystemInformation::set_uptime() {
     std::string path = "/proc/uptime";
     std::ifstream uptime(path);
 
@@ -43,9 +45,7 @@ std::string SystemInformation::uptime() {
     }
 
     std::string file_contents = "";
-    while (!uptime.eof()) {
-        uptime >> file_contents;
-    }
+    uptime >> file_contents;
 
     // We only need the value up to the first decimal point we encounter.
     std::string uptime_in_seconds = "";
@@ -56,9 +56,23 @@ std::string SystemInformation::uptime() {
     }
 
     int int_uptime = Helper::string_to_int(uptime_in_seconds);
-    int int_uptime_in_hours = int_uptime / 3600;
 
-    std::string uptime_in_hours = Helper::int_to_string(int_uptime_in_hours);
+    SystemInformation::int_uptime = int_uptime;
 
+    uptime.close()
+}
+
+int SystemInformation::uptime_hours() {
+    int uptime_in_hours = SystemInformation::int_uptime / 3600;
     return uptime_in_hours;
+}
+
+int SystemInformation::uptime_minutes() {
+    int uptime_in_minutes = (int_uptime / 60) - (SystemInformation::uptime_hours() * 60);
+    return uptime_in_minutes;
+}
+
+int SystemInformation::uptime_seconds() {
+    int uptime_in_seconds = int_uptime - (SystemInformation::uptime_hours() * 3600) - (SystemInformation::uptime_minutes() * 60);
+    return uptime_in_seconds;
 }

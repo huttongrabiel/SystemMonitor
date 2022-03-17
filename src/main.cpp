@@ -160,8 +160,8 @@ int main(int, char**)
         ImGui::Text("Uptime:");
 
         ImGui::TableNextColumn();
-        std::string uptime = SystemInformation::uptime();
-        ImGui::Text("%s", uptime.c_str());
+        SystemInformation::set_uptime();
+        ImGui::Text("%d hours %d minutes %d seconds", SystemInformation::uptime_hours(), SystemInformation::uptime_minutes(), SystemInformation::uptime_seconds());
         ImGui::PopFont();
 
         ImGui::EndTable();
