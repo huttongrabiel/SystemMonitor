@@ -128,10 +128,8 @@ int main(int, char**)
 
         ImGui::TableNextColumn();
 
-        ImGui::PushFont(roboto_medium2);
         ImGui::Text("%s", SystemInformation::cpu_temperature().c_str());
 
-        ImGui::PopFont();
         ImGui::PopFont();
 
         ImGui::TableNextRow();
