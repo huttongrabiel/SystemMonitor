@@ -21,6 +21,7 @@
 // internally wrapped libraries
 #include <SystemInformation.h>
 #include <Helper.h>
+#include <Formatting.h>
 
 std::string cpu_temperature();
 
@@ -123,10 +124,14 @@ int main(int, char**)
 
         ImGui::TableNextColumn();
 
+        Formatting::vertical_spacing(5);
+
         ImGui::PushFont(roboto_medium1);
-        ImGui::Text("CPU Temperature: ");
+        ImGui::Text("CPU Temperature");
 
         ImGui::TableNextColumn();
+
+        Formatting::vertical_spacing(5);
 
         ImGui::Text("%s", SystemInformation::cpu_temperature().c_str());
 
@@ -134,18 +139,15 @@ int main(int, char**)
 
         ImGui::TableNextRow();
         ImGui::TableNextColumn();
-        for (int i = 0; i < 10; i++) {
-            ImGui::Spacing();
-        }
+
+        Formatting::vertical_spacing(5);
 
         ImGui::PushFont(roboto_medium1);
         ImGui::Text("GPU Temperature");
 
         ImGui::TableNextColumn();
 
-        for (int i = 0; i < 10; i++) {
-            ImGui::Spacing();
-        }
+        Formatting::vertical_spacing(5);
 
         std::string gpu_temp_placeholder = "<placeholder>";
         ImGui::Text("%s",  gpu_temp_placeholder.c_str());
@@ -154,10 +156,14 @@ int main(int, char**)
         ImGui::TableNextRow();
         ImGui::TableNextColumn();
 
+        Formatting::vertical_spacing(5);
+
         ImGui::PushFont(roboto_medium1);
-        ImGui::Text("Uptime:");
+        ImGui::Text("Uptime");
 
         ImGui::TableNextColumn();
+        Formatting::vertical_spacing(5);
+
         SystemInformation::set_uptime();
         ImGui::Text("%d hours %d minutes %d seconds", SystemInformation::uptime_hours(), SystemInformation::uptime_minutes(), SystemInformation::uptime_seconds());
         ImGui::PopFont();
