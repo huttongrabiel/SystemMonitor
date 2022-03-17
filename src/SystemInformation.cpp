@@ -59,7 +59,7 @@ void SystemInformation::set_uptime() {
 
     SystemInformation::int_uptime = int_uptime;
 
-    uptime.close()
+    uptime.close();
 }
 
 int SystemInformation::uptime_hours() {
