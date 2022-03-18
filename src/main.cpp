@@ -22,6 +22,7 @@
 #include <SystemInformation.h>
 #include <Helper.h>
 #include <Formatting.h>
+#include <DisplayInformation.h>
 
 std::string cpu_temperature();
 
@@ -127,13 +128,8 @@ int main(int, char**)
         Formatting::vertical_spacing(5);
 
         ImGui::PushFont(roboto_medium1);
-        ImGui::Text("CPU Temperature");
 
-        ImGui::TableNextColumn();
-
-        Formatting::vertical_spacing(5);
-
-        ImGui::Text("%s C", SystemInformation::cpu_temperature().c_str());
+        DisplayInformation::display_cpu_temperature();
 
         ImGui::PopFont();
 
