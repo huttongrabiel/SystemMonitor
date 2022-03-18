@@ -24,7 +24,9 @@ set(IMGUI_SRC
         src/Helper.cpp 
         src/Helper.h 
         src/Formatting.cpp 
-        src/Formatting.h)
+        src/Formatting.h
+        src/DisplayInformation.cpp
+        src/DisplayInformation.h)
 
 #Create the executable and link against all the files provided to us by ImGui
 add_executable(SystemMonitor ${IMGUI_SRC})
