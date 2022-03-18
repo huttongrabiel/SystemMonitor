@@ -133,7 +133,7 @@ int main(int, char**)
 
         Formatting::vertical_spacing(5);
 
-        ImGui::Text("%s", SystemInformation::cpu_temperature().c_str());
+        ImGui::Text("%s C", SystemInformation::cpu_temperature().c_str());
 
         ImGui::PopFont();
 
