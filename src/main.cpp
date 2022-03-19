@@ -139,14 +139,7 @@ int main(int, char**)
         Formatting::vertical_spacing(5);
 
         ImGui::PushFont(roboto_medium1);
-        ImGui::Text("GPU Temperature");
-
-        ImGui::TableNextColumn();
-
-        Formatting::vertical_spacing(5);
-
-        std::string gpu_temp_placeholder = "<placeholder>";
-        ImGui::Text("%s",  gpu_temp_placeholder.c_str());
+        DisplayInformation::display_gpu_temperature();
         ImGui::PopFont();
 
         ImGui::TableNextRow();

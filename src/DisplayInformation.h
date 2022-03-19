@@ -8,6 +8,7 @@
 class DisplayInformation {
 public:
     static void display_cpu_temperature();
+    static void display_gpu_temperature();
 };
 
 #endif //SYSTEMMONITOR_DISPLAYINFORMATION_H

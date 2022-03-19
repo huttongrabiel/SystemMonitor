@@ -18,3 +18,14 @@ void DisplayInformation::display_cpu_temperature() {
     ImGui::TableNextRow();
     ImGui::TableNextColumn();
 }
+
+void DisplayInformation::display_gpu_temperature() {
+    ImGui::Text("GPU Temperature");
+
+    ImGui::TableNextColumn();
+
+    Formatting::vertical_spacing(5);
+
+    std::string gpu_temp_placeholder = "<placeholder>";
+    ImGui::Text("%s", gpu_temp_placeholder.c_str());
+}
