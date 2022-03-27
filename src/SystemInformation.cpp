@@ -34,6 +34,26 @@ std::string SystemInformation::cpu_temperature() {
     return cpu_temperature_decimal;
 }
 
+std::vector<std::string> SystemInformation::memory_information() {
+    std::string meminfo_file_path = "/proc/meminfo";
+    std::ifstream meminfo(meminfo_file_path);
+
+    if (!meminfo.is_open()) {
+        std::cerr << "ERROR: Failed to open file: " << meminfo_file_path << ".\n";
+    }
+
+    std::vector<std::string> memory_information {};
+    std::string current_file_line = "";
+    while (getline(meminfo, current_file_line)) {
+        memory_information.push_back(current_file_line);
+        current_file_line = "";
+    }
+
+    meminfo.close();
+
+    return memory_information;
+}
+
 int SystemInformation::int_uptime;
 
 void SystemInformation::set_uptime() {

@@ -7,11 +7,13 @@
 
 #include <iostream>
 #include <string.h>
+#include <vector>
 
 class SystemInformation {
 public:
     static int int_uptime;
     static std::string cpu_temperature();
+    static std::vector<std::string> memory_information();
     static void set_uptime();
     static int uptime_hours();
     static int uptime_minutes();

@@ -40,3 +40,10 @@ void DisplayInformation::display_uptime() {
     SystemInformation::set_uptime();
     ImGui::Text("%d hours %d minutes %d seconds", SystemInformation::uptime_hours(), SystemInformation::uptime_minutes(), SystemInformation::uptime_seconds());
 }
+
+void DisplayInformation::display_memory_information() {
+    std::vector<std::string> memory_information = SystemInformation::memory_information();
+
+    for (auto const& line : memory_information)
+        ImGui::Text(line.c_str());
+}

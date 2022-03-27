@@ -148,10 +148,12 @@ int main(int, char**)
 
         Formatting::vertical_spacing(5);
 
+        ImGui::EndTable();
+
+        DisplayInformation::display_memory_information();
+
         // End roboto_medium1 font.
         ImGui::PopFont();
-
-        ImGui::EndTable();
 
         ImGui::End();
 
