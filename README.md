@@ -1,19 +1,23 @@
 # SystemMonitor
-Simple C++ GUI application to track system information such as:
+Simple C++ GUI Application for System Monitoring, Currently Supports:
   - CPU Temperature
-  - CPU Fan RPM
-  - GPU Temp
-  - GPU Fan RPM
-  - ...
+  - Memory Information
+  - Uptime
 
 # GUI Library Used
-[imgui](https://github.com/ocornut/imgui)
+[Dear Imgui](https://github.com/ocornut/imgui)
 
-Going to try imgui out and see how it works. Looks interesting and 
-have heard good things
+# Building
+Currently will only work on Linux systems. This is because the information is obtained from the
+/proc files which is where the Linux kernel puts system information. Other OSes have some other variation of this and
+eventually we will support other OSes. My best guess is that Mac wil be coming next, but first we have to make Linux nice.
 
-# Usage
-Will update once I write some code...
+**Linux**:  
+
+In the project directory  
+```
+Build/build-linux.sh 
+```
 
 # Investigation In Reading CPU Temps for AMD
 [CoreTemp.com](https://www.alcpu.com/CoreTemp/howitworks.html)  
