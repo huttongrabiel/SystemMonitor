@@ -127,34 +127,28 @@ int main(int, char**)
 
         Formatting::vertical_spacing(5);
 
+        // Begin roboto_medium1 font.
         ImGui::PushFont(roboto_medium1);
 
         DisplayInformation::display_cpu_temperature();
 
-        ImGui::PopFont();
-
         ImGui::TableNextRow();
         ImGui::TableNextColumn();
 
         Formatting::vertical_spacing(5);
 
-        ImGui::PushFont(roboto_medium1);
         DisplayInformation::display_gpu_temperature();
-        ImGui::PopFont();
 
         ImGui::TableNextRow();
         ImGui::TableNextColumn();
 
         Formatting::vertical_spacing(5);
 
-        ImGui::PushFont(roboto_medium1);
-        ImGui::Text("Uptime");
+        DisplayInformation::display_uptime();
 
-        ImGui::TableNextColumn();
         Formatting::vertical_spacing(5);
 
-        SystemInformation::set_uptime();
-        ImGui::Text("%d hours %d minutes %d seconds", SystemInformation::uptime_hours(), SystemInformation::uptime_minutes(), SystemInformation::uptime_seconds());
+        // End roboto_medium1 font.
         ImGui::PopFont();
 
         ImGui::EndTable();
