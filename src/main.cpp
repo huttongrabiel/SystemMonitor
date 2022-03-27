@@ -121,34 +121,16 @@ int main(int, char**)
         std::string current_cpu_temperature;
         current_cpu_temperature = SystemInformation::cpu_temperature();
 
-        ImGui::BeginTable("table 1", 2);
-
-        ImGui::TableNextColumn();
-
-        Formatting::vertical_spacing(5);
+        Formatting::vertical_spacing(40);
 
         // Begin roboto_medium1 font.
         ImGui::PushFont(roboto_medium1);
 
         DisplayInformation::display_cpu_temperature();
 
-        ImGui::TableNextRow();
-        ImGui::TableNextColumn();
-
-        Formatting::vertical_spacing(5);
-
         DisplayInformation::display_gpu_temperature();
 
-        ImGui::TableNextRow();
-        ImGui::TableNextColumn();
-
-        Formatting::vertical_spacing(5);
-
         DisplayInformation::display_uptime();
-
-        Formatting::vertical_spacing(5);
-
-        ImGui::EndTable();
 
         DisplayInformation::display_memory_information();
 
