@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#FIXME. This needs a generic path not a specific local path
-cd /home/whuty/fun/SystemMonitor
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cd $SCRIPT_DIR/..
 cmake .
 make
 ./SystemMonitor
