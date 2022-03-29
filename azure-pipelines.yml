@@ -2,8 +2,8 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: ubuntu-20.04
 
 steps:
-- script: Build/build-linux.sh
+- script: ./Build/build-linux.sh
   displayName: Build SystemMonitor
