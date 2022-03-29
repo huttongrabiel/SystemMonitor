@@ -6,7 +6,6 @@ set(CMAKE_CXX_FLAGS "-g -D CMAKE_CXX_COMPILER=g++-9.3.0")
 
 #make an imgui folder and put all of these files in the imgui folder
 set(IMGUI_SRC
-        src/main.cpp
         vendor/imgui/examples/libs/glfw/include/GLFW/glfw3.h
         vendor/imgui/backends/imgui_impl_opengl3.h
         vendor/imgui/backends/imgui_impl_opengl3.cpp
@@ -19,17 +18,36 @@ set(IMGUI_SRC
         vendor/imgui/imgui_tables.cpp
         vendor/imgui/imgui_widgets.cpp
         vendor/imgui/imgui_demo.cpp
+   )
+
+set(SYSTEM_INFORMATION
         src/SystemInformation.cpp 
         src/SystemInformation.h 
+   )
+
+set(HELPER
         src/Helper.cpp 
         src/Helper.h 
+   )
+
+set(FORMATTING
         src/Formatting.cpp 
         src/Formatting.h
+   )
+
+set(DISPLAY_INFORMATION
         src/DisplayInformation.cpp
-        src/DisplayInformation.h)
+        src/DisplayInformation.h
+   )
 
 #Create the executable and link against all the files provided to us by ImGui
-add_executable(SystemMonitor ${IMGUI_SRC})
+add_executable(SystemMonitor src/main.cpp
+                             ${IMGUI_SRC}
+                             ${SYSTEM_INFORMATION}
+                             ${HELPER}
+                             ${FORMATTING}
+                             ${DISPLAY_INFORMATION}
+              )
 
 include_directories("${CMAKE_SOURCE_DIR}/vendor/imgui"
                     "${CMAKE_SOURCE_DIR}/vendor/imgui/backends/"
