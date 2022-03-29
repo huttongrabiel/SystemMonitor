@@ -1,4 +1,7 @@
-# SystemMonitor
+# SystemMonitor  
+
+[![Build Status](https://dev.azure.com/huttongrabiel/SystemMonitor/_apis/build/status/huttongrabiel.SystemMonitor?branchName=main)](https://dev.azure.com/huttongrabiel/SystemMonitor/_build/latest?definitionId=1&branchName=main)
+
 Simple C++ GUI Application for System Monitoring, Currently Supports:
   - CPU Temperature
   - Memory Information
