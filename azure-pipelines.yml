@@ -1,0 +1,9 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: Build/build-linux.sh
+  displayName: Build SystemMonitor
