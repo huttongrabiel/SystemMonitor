@@ -67,8 +67,9 @@ void DisplayInformation::display_memory_information() {
             bool string_selection_flag = false;
 
             for (int i = 0; i < line.length(); i++) {
-                if (line[i] == ' ' && !string_selection_flag) {
+                if (line[i] == ' ') {
                     string_selection_flag = true;
+                    continue;
                 }
 
                 string_selection_flag ? memory_data.push_back(line[i]) : memory_topic.push_back(line[i]);
