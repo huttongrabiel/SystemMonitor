@@ -3,7 +3,6 @@
 //
 
 #include <iostream>
-#include <string.h>
 #include <fstream>
 #include <SystemInformation.h>
 #include <Helper.h>

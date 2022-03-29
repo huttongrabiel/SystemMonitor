@@ -3,7 +3,6 @@
 //
 #include <DisplayInformation.h>
 #include <SystemInformation.h>
-#include <Formatting.h>
 #include "imgui.h"
 
 void DisplayInformation::display_cpu_temperature() {
@@ -63,7 +62,6 @@ void DisplayInformation::display_memory_information() {
         for (auto const& line: memory_information) {
             std::string memory_topic = "";
             std::string memory_data = "";
-            int first_whitespace_character = 0;
             bool string_selection_flag = false;
 
             for (int i = 0; i < line.length(); i++) {

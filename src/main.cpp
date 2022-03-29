@@ -1,14 +1,7 @@
-// Dear ImGui: standalone example application for GLFW + OpenGL 3, using programmable pipeline
-// (GLFW is a cross-platform general purpose library for handling windows, inputs, OpenGL/Vulkan/Metal graphics context creation, etc.)
-// If you are new to Dear ImGui, read documentation from the docs/ folder + read the top of imgui.cpp.
-// Read online: https://github.com/ocornut/imgui/tree/master/docs
-
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 #include <stdio.h>
-#include <thread>
-#include <chrono>
 
 #if defined(IMGUI_IMPL_OPENGL_ES2)
 #include <GLES2/gl2.h>
@@ -16,15 +9,11 @@
 #include <GLFW/glfw3.h> // Will drag system OpenGL headers
 #include <iostream>
 #include <string.h>
-#include <fstream>
 
 // internally wrapped libraries
 #include <SystemInformation.h>
-#include <Helper.h>
 #include <Formatting.h>
 #include <DisplayInformation.h>
-
-std::string cpu_temperature();
 
 // [Win32] Our example includes a copy of glfw3.lib pre-compiled with VS2010 to maximize ease of testing and compatibility with old VS compilers.
 // To link with VS2010-era libraries, VS2015+ requires linking with legacy_stdio_definitions.lib, which we do using this pragma.
@@ -118,12 +107,9 @@ int main(int, char**)
         ImGui::SetWindowSize(ImVec2(600, 700), ImGuiCond_Once);
         ImGui::SetWindowPos(ImVec2(0,0), ImGuiCond_Once);
 
-        std::string current_cpu_temperature;
-        current_cpu_temperature = SystemInformation::cpu_temperature();
-
         Formatting::vertical_spacing(40);
 
-        // Begin roboto_medium1 font.
+        // Shift font to a bolder font for the data.
         ImGui::PushFont(roboto_medium1);
 
         DisplayInformation::display_cpu_temperature();
@@ -134,7 +120,7 @@ int main(int, char**)
 
         DisplayInformation::display_memory_information();
 
-        // End roboto_medium1 font.
+        // Remove bolder font.
         ImGui::PopFont();
 
         ImGui::End();
