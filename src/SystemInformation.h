@@ -11,7 +11,7 @@
 
 class SystemInformation {
 public:
-    static int int_uptime;
+    static int m_int_uptime;
     static std::string cpu_temperature();
     static std::vector<std::string> memory_information();
     static void set_uptime();

@@ -53,7 +53,7 @@ std::vector<std::string> SystemInformation::memory_information() {
     return memory_information;
 }
 
-int SystemInformation::int_uptime;
+int SystemInformation::m_int_uptime;
 
 void SystemInformation::set_uptime() {
     std::string path = "/proc/uptime";
@@ -76,22 +76,22 @@ void SystemInformation::set_uptime() {
 
     int int_uptime = Helper::string_to_int(uptime_in_seconds);
 
-    SystemInformation::int_uptime = int_uptime;
+    SystemInformation::m_int_uptime = int_uptime;
 
     uptime.close();
 }
 
 int SystemInformation::uptime_hours() {
-    int uptime_in_hours = SystemInformation::int_uptime / 3600;
+    int uptime_in_hours = SystemInformation::m_int_uptime / 3600;
     return uptime_in_hours;
 }
 
 int SystemInformation::uptime_minutes() {
-    int uptime_in_minutes = (int_uptime / 60) - (SystemInformation::uptime_hours() * 60);
+    int uptime_in_minutes = (m_int_uptime / 60) - (SystemInformation::uptime_hours() * 60);
     return uptime_in_minutes;
 }
 
 int SystemInformation::uptime_seconds() {
-    int uptime_in_seconds = int_uptime - (SystemInformation::uptime_hours() * 3600) - (SystemInformation::uptime_minutes() * 60);
+    int uptime_in_seconds = m_int_uptime - (SystemInformation::uptime_hours() * 3600) - (SystemInformation::uptime_minutes() * 60);
     return uptime_in_seconds;
 }
