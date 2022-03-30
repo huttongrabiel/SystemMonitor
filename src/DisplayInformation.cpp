@@ -4,6 +4,22 @@
 #include <DisplayInformation.h>
 #include <SystemInformation.h>
 #include "imgui.h"
+#include <Helper.h>
+
+void DisplayInformation::display_main_histogram() {
+    std::string cpu_temperature_string = SystemInformation::cpu_temperature();
+    int cpu_temperature_int = Helper::string_to_int(cpu_temperature_string.substr(0,2)); // Substring to go from 33.000 to just 33
+    auto cpu_temperature_float = static_cast<float>(cpu_temperature_int);
+
+    SystemInformation::current_uptime_from_proc();
+    int uptime = SystemInformation::m_int_uptime / 3600;
+    auto uptime_float = static_cast<float>(uptime);
+
+    static float main_histogram_values[] = {cpu_temperature_float, uptime_float};
+
+    const char* overlay_labels = "CPU                                            Uptime";
+    ImGui::PlotHistogram("", main_histogram_values, 2, 0, overlay_labels, 0.0f, 50.0f, ImVec2(600.0f, 200.0f));
+}
 
 void DisplayInformation::display_cpu_temperature() {
     if (ImGui::CollapsingHeader("CPU Information")) {
@@ -45,7 +61,7 @@ void DisplayInformation::display_uptime() {
 
         ImGui::TableNextColumn();
 
-        SystemInformation::set_uptime();
+        SystemInformation::current_uptime_from_proc();
         ImGui::Text("%d hours %d minutes %d seconds", SystemInformation::uptime_hours(), SystemInformation::uptime_minutes(), SystemInformation::uptime_seconds());
 
         ImGui::EndTable();

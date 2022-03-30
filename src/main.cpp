@@ -107,10 +107,14 @@ int main(int, char**)
         ImGui::SetWindowSize(ImVec2(600, 700), ImGuiCond_Once);
         ImGui::SetWindowPos(ImVec2(0,0), ImGuiCond_Once);
 
-        Formatting::vertical_spacing(40);
-
         // Shift font to a bolder font for the data.
         ImGui::PushFont(roboto_medium1);
+
+        Formatting::vertical_spacing(20);
+
+        DisplayInformation::display_main_histogram();
+
+        Formatting::vertical_spacing(40);
 
         DisplayInformation::display_cpu_temperature();
 

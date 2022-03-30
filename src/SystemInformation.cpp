@@ -55,7 +55,7 @@ std::vector<std::string> SystemInformation::memory_information() {
 
 int SystemInformation::m_int_uptime;
 
-void SystemInformation::set_uptime() {
+void SystemInformation::current_uptime_from_proc() {
     std::string path = "/proc/uptime";
     std::ifstream uptime(path);
 

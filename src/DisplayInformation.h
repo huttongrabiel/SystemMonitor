@@ -5,8 +5,12 @@
 #ifndef SYSTEMMONITOR_DISPLAYINFORMATION_H
 #define SYSTEMMONITOR_DISPLAYINFORMATION_H
 
+#include <iostream>
+
 class DisplayInformation {
 public:
+    DisplayInformation();
+    static void display_main_histogram();
     static void display_cpu_temperature();
     static void display_gpu_temperature();
     static void display_uptime();

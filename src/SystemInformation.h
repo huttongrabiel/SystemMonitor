@@ -14,7 +14,7 @@ public:
     static int m_int_uptime;
     static std::string cpu_temperature();
     static std::vector<std::string> memory_information();
-    static void set_uptime();
+    static void current_uptime_from_proc();
     static int uptime_hours();
     static int uptime_minutes();
     static int uptime_seconds();
