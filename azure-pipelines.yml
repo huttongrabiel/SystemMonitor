@@ -5,5 +5,9 @@ pool:
   vmImage: ubuntu-20.04
 
 steps:
-- script: ./Build/build-linux.sh
-  displayName: Build SystemMonitor
+- script: cmake .
+  workingDirectory: $(System.DefaultWorkingDirectory)/Build
+- script: make
+  workingDirectory: $(System.DefaultWorkingDirectory)/Build
+- script: ./SystemMonitor.sh
+  workingDirectory: $(System.DefaultWorkingDirectory)/Build
