@@ -110,11 +110,11 @@ int main(int, char**)
         // Shift font to a bolder font for the data.
         ImGui::PushFont(roboto_medium1);
 
-        Formatting::vertical_spacing(20);
+        Formatting::vertical_spacing(5);
 
         DisplayInformation::display_main_histogram();
 
-        Formatting::vertical_spacing(40);
+        Formatting::vertical_spacing(10);
 
         DisplayInformation::display_cpu_temperature();
 
