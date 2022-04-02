@@ -9,5 +9,3 @@ steps:
   workingDirectory: $(System.DefaultWorkingDirectory)/Build
 - script: make
   workingDirectory: $(System.DefaultWorkingDirectory)/Build
-- script: ./SystemMonitor.sh
-  workingDirectory: $(System.DefaultWorkingDirectory)/Build
