@@ -5,7 +5,9 @@ pool:
   vmImage: ubuntu-20.04
 
 steps:
+- script: ls $(System.DefaultWorkingDirectory)/vendor
+- script: ls $(System.DefaultWorkingDirectory)/vendor/imgui
 - script: cmake .
-  workingDirectory: $(System.DefaultWorkingDirectory)/Build
+  workingDirectory: $(System.DefaultWorkingDirectory)
 - script: make
-  workingDirectory: $(System.DefaultWorkingDirectory)/Build
+  workingDirectory: $(System.DefaultWorkingDirectory)
