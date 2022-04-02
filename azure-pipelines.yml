@@ -6,6 +6,6 @@ pool:
 
 steps:
 - script: cmake .
-  workingDirectory: $(System.DefaultWorkingDirectory)/Build
+  workingDirectory: $(System.DefaultWorkingDirectory)
 - script: make
-  workingDirectory: $(System.DefaultWorkingDirectory)/Build
+#  workingDirectory: $(System.DefaultWorkingDirectory)
