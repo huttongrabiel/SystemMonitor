@@ -51,7 +51,7 @@ void DisplayInformation::display_memory_load_progress_bar() {
 
     std::string load_percentage_label = "Memory Load";
 
-    Helper::centered_imgui_text(load_percentage_label);
+    Formatting::centered_imgui_text(load_percentage_label);
     Formatting::vertical_spacing(2);
     ImGui::ProgressBar(memory_load_percentage, ImVec2(600.0f, 0.0f));
 }
