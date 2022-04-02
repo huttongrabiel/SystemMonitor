@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <Helper.h>
+#include "imgui.h"
 
 std::string Helper::int_to_string(int num) {
 
@@ -22,13 +23,21 @@ std::string Helper::int_to_string(int num) {
 }
 
 int Helper::string_to_int(std::string str) {
-    int retval = 0;
+    unsigned long long retval = 0;
 
-    int multiplier = 1;
+    long long multiplier = 1;
     for (int i = str.length()-1; i >= 0; i--) {
         retval += multiplier * (str[i] - '0');
         multiplier *= 10;
     }
 
     return retval;
+}
+
+void Helper::centered_imgui_text(std::string text) {
+    auto windowWidth = ImGui::GetWindowSize().x;
+    auto textWidth   = ImGui::CalcTextSize(text.c_str()).x;
+
+    ImGui::SetCursorPosX((windowWidth - textWidth) * 0.5f);
+    ImGui::Text(text.c_str());
 }
