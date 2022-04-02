@@ -84,8 +84,8 @@ int main(int, char**)
     // Our state
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-    ImFont* roboto_medium1 = io.Fonts->AddFontFromFileTTF("../vendor/imgui/misc/fonts/Roboto-Medium.ttf", 20.0);
-    ImFont* roboto_medium2 = io.Fonts->AddFontFromFileTTF("../vendor/imgui/misc/fonts/Roboto-Medium.ttf", 16.0);
+    ImFont* roboto_medium1 = io.Fonts->AddFontFromFileTTF("vendor/imgui/misc/fonts/Roboto-Medium.ttf", 20.0);
+    ImFont* roboto_medium2 = io.Fonts->AddFontFromFileTTF("vendor/imgui/misc/fonts/Roboto-Medium.ttf", 16.0);
 
     // Main loop
     while (!glfwWindowShouldClose(window))
@@ -113,6 +113,10 @@ int main(int, char**)
         Formatting::vertical_spacing(5);
 
         DisplayInformation::display_main_histogram();
+
+        Formatting::vertical_spacing(5);
+
+        DisplayInformation::display_memory_load_progress_bar();
 
         Formatting::vertical_spacing(10);
 
