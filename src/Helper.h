@@ -11,7 +11,6 @@ class Helper {
 public:
     static int string_to_int(std::string);
     static std::string int_to_string(int);
-    static void centered_imgui_text(std::string);
 };
 
 #endif //SYSTEMMONITOR_HELPER_H

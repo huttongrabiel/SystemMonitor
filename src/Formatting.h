@@ -8,6 +8,7 @@
 class Formatting {
 public:
     static void vertical_spacing(int);
+    static void centered_imgui_text(std::string);
 };
 
 #endif //SYSTEMMONITOR_FORMATTING_H

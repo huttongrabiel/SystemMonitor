@@ -33,11 +33,3 @@ int Helper::string_to_int(std::string str) {
 
     return retval;
 }
-
-void Helper::centered_imgui_text(std::string text) {
-    auto windowWidth = ImGui::GetWindowSize().x;
-    auto textWidth   = ImGui::CalcTextSize(text.c_str()).x;
-
-    ImGui::SetCursorPosX((windowWidth - textWidth) * 0.5f);
-    ImGui::Text(text.c_str());
-}
