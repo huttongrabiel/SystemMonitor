@@ -5,6 +5,8 @@
 #include <SystemInformation.h>
 #include "imgui.h"
 #include <Helper.h>
+#include <future>
+#include <Formatting.h>
 
 void DisplayInformation::display_main_histogram() {
     std::string cpu_temperature_string = SystemInformation::cpu_temperature();
@@ -19,6 +21,39 @@ void DisplayInformation::display_main_histogram() {
 
     const char* overlay_labels = "CPU                                            Uptime";
     ImGui::PlotHistogram("", main_histogram_values, 2, 0, overlay_labels, 0.0f, 50.0f, ImVec2(600.0f, 200.0f));
+}
+
+void DisplayInformation::display_memory_load_progress_bar() {
+    std::vector<std::string> memory_information = SystemInformation::memory_information();
+
+    std::string available_memory = memory_information[0];
+    std::string consumed_memory = memory_information[2];
+
+    std::string trimmed_available_memory = "";
+    std::string trimmed_consumed_memory = "";
+
+    for (int i = 0; i < consumed_memory.length(); i++) {
+        if (static_cast<int>(available_memory[i]) >= 48 && static_cast<int>(available_memory[i]) <= 57) {
+            trimmed_available_memory.push_back(available_memory[i]);
+        }
+        if (static_cast<int>(consumed_memory[i]) >= 48 && static_cast<int>(consumed_memory[i]) <= 57) {
+            trimmed_consumed_memory.push_back(consumed_memory[i]);
+        }
+    }
+
+    auto available_memory_float = static_cast<float>(Helper::string_to_int(trimmed_available_memory));
+    auto consumed_memory_float = static_cast<float>(Helper::string_to_int(trimmed_consumed_memory));
+
+    auto available_minus_consumed_memory = available_memory_float - consumed_memory_float;
+
+    // Percentage is in decimal form ie 5% = 0.05f.
+    auto memory_load_percentage = static_cast<float>(available_minus_consumed_memory / available_memory_float);
+
+    std::string load_percentage_label = "Memory Load";
+
+    Helper::centered_imgui_text(load_percentage_label);
+    Formatting::vertical_spacing(2);
+    ImGui::ProgressBar(memory_load_percentage, ImVec2(600.0f, 0.0f));
 }
 
 void DisplayInformation::display_cpu_temperature() {
