@@ -103,7 +103,7 @@ int main(int, char**)
         ImGui::NewFrame();
 
         // Main Window
-        ImGui::Begin("System Monitor", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
+        ImGui::Begin("System Monitor", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
         ImGui::SetWindowSize(ImVec2(600, 700), ImGuiCond_Once);
         ImGui::SetWindowPos(ImVec2(0,0), ImGuiCond_Once);
 
