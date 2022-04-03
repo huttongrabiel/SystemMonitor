@@ -6,8 +6,5 @@ pool:
 
 
 steps:
-  - task: CMake@1
-#- script: cmake .
-#  workingDirectory: $(System.DefaultWorkingDirectory)
-#- script: make
-#  workingDirectory: $(System.DefaultWorkingDirectory)
+- task: CMake@1
+- script: make
