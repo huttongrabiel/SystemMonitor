@@ -6,17 +6,17 @@ set(CMAKE_CXX_FLAGS "-g -D CMAKE_CXX_COMPILER=g++-9.3.0")
 
 #make an imgui folder and put all of these files in the imgui folder
 set(IMGUI_SRC
-        vendor/imgui/backends/imgui_impl_opengl3.h
-        vendor/imgui/backends/imgui_impl_opengl3.cpp
-        vendor/imgui/backends/imgui_impl_opengl3_loader.h
-        vendor/imgui/backends/imgui_impl_glfw.h
-        vendor/imgui/backends/imgui_impl_glfw.cpp
+        vendor/imgui/imgui_impl_opengl3.h
+        vendor/imgui/imgui_impl_opengl3.cpp
+        vendor/imgui/imgui_impl_opengl3_loader.h
+        vendor/imgui/imgui_impl_glfw.h
+        vendor/imgui/imgui_impl_glfw.cpp
         vendor/imgui/imgui.h
         vendor/imgui/imgui.cpp
         vendor/imgui/imgui_draw.cpp
         vendor/imgui/imgui_tables.cpp
         vendor/imgui/imgui_widgets.cpp
-        vendor/imgui/imgui_demo.cpp
+#        vendor/imgui1/imgui_demo.cpp
    )
 
 set(SYSTEM_INFORMATION
