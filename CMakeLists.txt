@@ -19,6 +19,10 @@ set(IMGUI_SRC
 #        vendor/imgui1/imgui_demo.cpp
    )
 
+set(GLFW
+        vendor/glfw3.h
+   )
+
 set(SYSTEM_INFORMATION
         src/SystemInformation.cpp 
         src/SystemInformation.h 
@@ -46,11 +50,13 @@ add_executable(SystemMonitor src/main.cpp
                              ${HELPER}
                              ${FORMATTING}
                              ${DISPLAY_INFORMATION}
+                             ${GLFW}
               )
 
 include_directories("${CMAKE_SOURCE_DIR}/vendor/imgui"
                     "${CMAKE_SOURCE_DIR}/vendor/imgui/backends/"
                     "${CMAKE_SOURCE_DIR}/src/"
+                    "${CMAKE_SOURCE_DIR}/vendor/"
                    )
 
 # https://stackoverflow.com/questions/17768008/how-to-build-install-glfw-3-and-use-it-in-a-linux-project
