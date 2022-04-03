@@ -4,7 +4,9 @@ trigger:
 pool:
   vmImage: ubuntu-20.04
 
-
 steps:
 - task: CMake@1
+  inputs:
+    workingDirectory: $(Build.SourcesDirectory)
 - script: make
+  workingDirectory: $(Build.SourcesDirectory)
