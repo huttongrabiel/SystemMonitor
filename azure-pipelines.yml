@@ -4,8 +4,10 @@ trigger:
 pool:
   vmImage: ubuntu-20.04
 
+
 steps:
-- script: cmake .
-  workingDirectory: $(System.DefaultWorkingDirectory)
-- script: make
+  - task: CMake@1
+#- script: cmake .
+#  workingDirectory: $(System.DefaultWorkingDirectory)
+#- script: make
 #  workingDirectory: $(System.DefaultWorkingDirectory)
