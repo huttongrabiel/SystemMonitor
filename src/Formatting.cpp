@@ -19,3 +19,11 @@ void Formatting::centered_imgui_text(std::string text) {
     ImGui::SetCursorPosX((windowWidth - textWidth) * 0.5f);
     ImGui::Text(text.c_str());
 }
+
+void Formatting::insert_text_at(Window_Width_Multiple multiple, std::string const& text) {
+    auto const window_width = ImGui::GetWindowSize().x;
+    float text_width = ImGui::CalcTextSize(text.c_str()).x;
+
+    ImGui::SetCursorPosX((window_width * multiple) - (text_width / 2));
+    ImGui::Text("%s", text.c_str());
+}
