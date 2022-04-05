@@ -58,6 +58,7 @@ int main(int, char**)
 #endif
 
     // Create window with graphics context
+    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
     GLFWwindow* window = glfwCreateWindow(600, 700, "SystemMonitor", NULL, NULL);
     if (window == NULL)
         return 1;
