@@ -4,16 +4,24 @@
   choose to try it with another distro, you will most likely need to make some tweaks. Please do update if you get it working :)**
 
 **First, Install All Dependencies:**  
-``` sudo apt-get build-dep glfw3 ``` 
+```bash
+sudo apt-get build-dep glfw3 
+``` 
 
 &emsp;&emsp;&emsp;if you get the error *'You must put some 'source' URIs in your sources.list'* do  
-&emsp;&emsp;&emsp;```sudo sed -i -e 's/# deb-src/deb-src/' /etc/apt/sources.list```  
+```bash
+sudo sed -i -e 's/# deb-src/deb-src/' /etc/apt/sources.list
+```  
 
 **and more dependencies**  
-```sudo apt-get install libxxf86vm-dev libglu1-mesa-dev ```
+```bash
+sudo apt-get install libxxf86vm-dev libglu1-mesa-dev 
+```
 
 **Make and CMake**  
-```sudo apt install make cmake```
+```bash
+sudo apt install make cmake
+```
 
 **Install GLFW3:**
 - Navigate to [GLFW Website](https://www.glfw.org/download) and install Source Package then unzip in terminal
