@@ -109,7 +109,7 @@ void DisplayInformation::display_memory_information() {
     std::vector<std::string> memory_information = SystemInformation::memory_information();
 
     if (ImGui::CollapsingHeader("Memory Information")) {
-        ImGui::BeginTable("MemoryInformation", 2);
+        ImGui::BeginTable("MemoryInformation", 3);
         ImGui::TableNextColumn();
 
         for (auto const& line: memory_information) {
@@ -117,7 +117,8 @@ void DisplayInformation::display_memory_information() {
             std::string memory_data = "";
             bool string_selection_flag = false;
 
-            for (int i = 0; i < line.length(); i++) {
+            auto memory_info_line_length = line.length();
+            for (int i = 0; i < memory_info_line_length-2; i++) {
                 if (line[i] == ' ') {
                     string_selection_flag = true;
                     continue;
@@ -131,6 +132,10 @@ void DisplayInformation::display_memory_information() {
             ImGui::TableNextColumn();
 
             ImGui::Text(memory_data.c_str());
+
+            ImGui::TableNextColumn();
+
+            ImGui::Text("kB");
 
             ImGui::TableNextRow();
             ImGui::TableNextColumn();
