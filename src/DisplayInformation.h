@@ -9,7 +9,6 @@
 
 class DisplayInformation {
 public:
-    DisplayInformation();
     static void display_main_histogram();
     static void display_memory_load_progress_bar();
     static void display_cpu_temperature();

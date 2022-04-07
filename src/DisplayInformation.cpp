@@ -5,7 +5,6 @@
 #include <SystemInformation.h>
 #include "imgui.h"
 #include <Helper.h>
-#include <future>
 #include <Formatting.h>
 
 void DisplayInformation::display_main_histogram() {
@@ -14,10 +13,10 @@ void DisplayInformation::display_main_histogram() {
     auto cpu_temperature_float = static_cast<float>(cpu_temperature_int);
 
     SystemInformation::current_uptime_from_proc();
-    int uptime = SystemInformation::m_int_uptime / 3600;
+    int const uptime = SystemInformation::m_int_uptime / 3600;
     auto uptime_float = static_cast<float>(uptime);
 
-    static float main_histogram_values[] = {cpu_temperature_float, uptime_float};
+    static float const main_histogram_values[] = {cpu_temperature_float, uptime_float};
 
     Formatting::insert_text_at(0.25, "CPU (C)");
     ImGui::SameLine();
@@ -28,11 +27,11 @@ void DisplayInformation::display_main_histogram() {
 void DisplayInformation::display_memory_load_progress_bar() {
     std::vector<std::string> memory_information = SystemInformation::memory_information();
 
-    std::string available_memory = memory_information[0];
-    std::string consumed_memory = memory_information[2];
+    std::string const available_memory = memory_information[0];
+    std::string const consumed_memory = memory_information[2];
 
-    std::string trimmed_available_memory = "";
-    std::string trimmed_consumed_memory = "";
+    std::string trimmed_available_memory;
+    std::string trimmed_consumed_memory;
 
     for (int i = 0; i < consumed_memory.length(); i++) {
         if (static_cast<int>(available_memory[i]) >= 48 && static_cast<int>(available_memory[i]) <= 57) {
@@ -43,15 +42,15 @@ void DisplayInformation::display_memory_load_progress_bar() {
         }
     }
 
-    auto available_memory_float = static_cast<float>(Helper::string_to_int(trimmed_available_memory));
-    auto consumed_memory_float = static_cast<float>(Helper::string_to_int(trimmed_consumed_memory));
+    auto const available_memory_float = static_cast<float>(Helper::string_to_int(trimmed_available_memory));
+    auto const consumed_memory_float = static_cast<float>(Helper::string_to_int(trimmed_consumed_memory));
 
-    auto available_minus_consumed_memory = available_memory_float - consumed_memory_float;
+    auto const available_minus_consumed_memory = available_memory_float - consumed_memory_float;
 
     // Percentage is in decimal form ie 5% = 0.05f.
-    auto memory_load_percentage = static_cast<float>(available_minus_consumed_memory / available_memory_float);
+    auto const memory_load_percentage = static_cast<float>(available_minus_consumed_memory / available_memory_float);
 
-    std::string load_percentage_label = "Memory Load";
+    std::string const load_percentage_label = "Memory Load";
 
     Formatting::centered_imgui_text(load_percentage_label);
     Formatting::vertical_spacing(2);
@@ -113,11 +112,11 @@ void DisplayInformation::display_memory_information() {
         ImGui::TableNextColumn();
 
         for (auto const& line: memory_information) {
-            std::string memory_topic = "";
-            std::string memory_data = "";
+            std::string memory_topic;
+            std::string memory_data;
             bool string_selection_flag = false;
 
-            auto memory_info_line_length = line.length();
+            auto const memory_info_line_length = line.length();
             for (int i = 0; i < memory_info_line_length-2; i++) {
                 if (line[i] == ' ') {
                     string_selection_flag = true;
@@ -127,11 +126,11 @@ void DisplayInformation::display_memory_information() {
                 string_selection_flag ? memory_data.push_back(line[i]) : memory_topic.push_back(line[i]);
             }
 
-            ImGui::Text(memory_topic.c_str());
+            ImGui::Text("%s", memory_topic.c_str());
 
             ImGui::TableNextColumn();
 
-            ImGui::Text(memory_data.c_str());
+            ImGui::Text("%s", memory_data.c_str());
 
             ImGui::TableNextColumn();
 
