@@ -85,7 +85,7 @@ int main(int, char**)
     // Our state
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-    ImFont* roboto_medium1 = io.Fonts->AddFontFromFileTTF("vendor/imgui/fonts/Roboto-Medium.ttf", 20.0);
+    ImFont* roboto_medium1 = io.Fonts->AddFontFromFileTTF("../vendor/imgui/fonts/Roboto-Medium.ttf", 20.0);
 
     // Main loop
     while (!glfwWindowShouldClose(window))
