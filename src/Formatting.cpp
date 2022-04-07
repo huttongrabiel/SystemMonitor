@@ -20,7 +20,7 @@ void Formatting::centered_imgui_text(std::string text) {
     ImGui::Text("%s", text.c_str());
 }
 
-void Formatting::insert_text_at(Window_Width_Multiple multiple, std::string const& text) {
+void Formatting::insert_text_at(Percent_of_Window_Width multiple, std::string const& text) {
     auto const window_width = ImGui::GetWindowSize().x;
     auto const text_width = ImGui::CalcTextSize(text.c_str()).x;
 
