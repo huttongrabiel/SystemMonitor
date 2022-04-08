@@ -18,9 +18,9 @@ void DisplayInformation::display_main_histogram() {
 
     static float const main_histogram_values[] = {cpu_temperature_float, uptime_float};
 
-    Formatting::insert_text_at(0.25, "CPU (C)");
+    Formatting::insert_text_at(0.25, "CPU (C°)");
     ImGui::SameLine();
-    Formatting::insert_text_at(0.75, "Uptime (hours)");
+    Formatting::insert_text_at(0.75, "Uptime (Hours)");
     ImGui::PlotHistogram("", main_histogram_values, 2, 0, NULL, 0.0f, 50.0f, ImVec2(600.0f, 200.0f));
 }
 
@@ -66,7 +66,7 @@ void DisplayInformation::display_cpu_temperature() {
 
         ImGui::TableNextColumn();
 
-        ImGui::Text("%s C", SystemInformation::cpu_temperature().c_str());
+        ImGui::Text("%s C°", SystemInformation::cpu_temperature().c_str());
 
         ImGui::EndTable();
     }
