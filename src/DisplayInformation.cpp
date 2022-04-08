@@ -21,7 +21,7 @@ void DisplayInformation::display_main_histogram() {
     Formatting::insert_text_at(0.25, "CPU (C°)");
     ImGui::SameLine();
     Formatting::insert_text_at(0.75, "Uptime (Hours)");
-    ImGui::PlotHistogram("", main_histogram_values, 2, 0, NULL, 0.0f, 50.0f, ImVec2(600.0f, 200.0f));
+    ImGui::PlotHistogram("", main_histogram_values, 2, 0, NULL, 0.0f, 100.0f, ImVec2(600.0f, 200.0f));
 }
 
 void DisplayInformation::display_memory_load_progress_bar() {
