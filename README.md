@@ -5,7 +5,9 @@
 Simple C++ GUI Application for System Monitoring, Currently Supports:
   - CPU Temperature
   - Memory Information
-  - Uptime
+  - Uptime  
+
+![System Monitor](Documentation/SystemMonitor2.png) 
 
 # GUI Library Used
 [Dear Imgui](https://github.com/ocornut/imgui)
